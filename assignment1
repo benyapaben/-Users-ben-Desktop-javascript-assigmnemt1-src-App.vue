@@ -1,0 +1,56 @@
+<template>
+  <div id="app">
+    <div>
+      <h1 :class="{ active: isActive }">Goodmornig, welcome to school</h1>
+    </div>
+    <div>
+      <label for="name">Name: </label>
+      <input type="text" v-model="name" id="name" />
+    </div>
+    <div>
+      <label for="time">Time: </label>
+      <input type="text" v-model="time" id="time" />
+    </div>
+    <button @click="displayGreeting">Check in</button>
+    <div>
+      <p v-if="greeting">{{ greeting }}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      name: '',
+      time: '',
+      greeting: '',
+      isActive: true
+    };
+  },
+  methods: {
+    displayGreeting() {
+      if (this.name && this.time) {
+        this.greeting = `${this.name} check in at ${this.time}.`;
+      } else {
+        this.greeting = "";
+      }
+    },
+  },
+};
+</script>
+
+<style>
+h1.active{
+  color: #473668;
+}
+
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #29394e;
+  margin-top: 60px;
+}
+</style>
